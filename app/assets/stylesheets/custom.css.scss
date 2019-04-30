@@ -40,6 +40,21 @@ $navbar-default-bg: black;
   font-size: 1.7em;
 }
 
+.article-actions {
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 5px;
+}
+
+.article-title {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.article-body {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
 .footer {
   margin-top: 45px;
   padding-top: 5px;
@@ -63,4 +78,8 @@ $navbar-default-bg: black;
 .footer ul li {
   float: left;
   margin-left: 15px;
+}
+
+.col-xs-8 {
+  float: none;
 }
