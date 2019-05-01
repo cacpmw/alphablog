@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
 
   def create
 
-    @article = Article.new(articles_params)
+    @article = Article.new(article_params)
     @article.user = User.first
     if @article.save
       flash[:success] = 'Article was successfully created'
@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
   def edit; end
 
   def update
-    if @article.update(articles_params)
+    if @article.update(article_params)
       flash[:success] = 'Article was successfully updated'
       redirect_to article_path(@article)
     else
@@ -45,9 +45,12 @@ class ArticlesController < ApplicationController
 
   def set_article
     @article = Article.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:warning] = 'Article not found'
+    redirect_to articles_path
   end
 
-  def articles_params
+  def article_params
     params.require(:article).permit(:title, :description)
   end
 end
