@@ -11,4 +11,5 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX }
   # relationships
   has_many(:articles)
+  has_secure_password
 end
