@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, except: %i[new index create]
   before_action :required_user, except: %i[index show]
-  before_action :require_same_user, only: [:edit, :update, :destroy]
+  before_action :require_same_user, only: %i[edit update destroy]
 
 
   def new
