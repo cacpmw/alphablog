@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, except: %i[new index create]
-
+  before_action :required_user, except: %i[index show]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
   def index
     @users = User.paginate(page: params[:page], per_page: 5)
   end
@@ -19,7 +20,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit;
+  def edit
   end
 
   def update
@@ -42,6 +43,13 @@ class UsersController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     flash[:warning] = 'User not found'
     redirect_to articles_path
+  end
+
+  def require_same_user
+    if current_user != @user
+      flash[:warning] = 'You can only manage you own profile'
+      redirect_to root_path
+    end
   end
 
   def user_params
