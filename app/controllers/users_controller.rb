@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, except: %i[new index create]
 
   def index
-    @users = User.all
+    @users = User.paginate(page: params[:page], per_page: 5)
   end
 
   def new
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "Welcome to the Alpha Blog #{@user.username}"
-      redirect_to articles_path
+      redirect_to users_path
     else
       render 'new'
     end
@@ -31,7 +31,8 @@ class UsersController < ApplicationController
     end
   end
 
-  def show;
+  def show
+    @user_articles = @user.articles.paginate(page: params[:page], per_page: 5)
   end
 
   private
