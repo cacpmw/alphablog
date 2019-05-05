@@ -10,6 +10,6 @@ class User < ApplicationRecord
                     length: { minimum: 10, maximum: 300 },
                     format: { with: VALID_EMAIL_REGEX }
   # relationships
-  has_many(:articles)
+  has_many(:articles,dependent: :destroy)
   has_secure_password
 end
