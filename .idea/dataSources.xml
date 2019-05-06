@@ -39,7 +39,7 @@
       <imported>true</imported>
       <remarks>$PROJECT_DIR$/config/database.yml</remarks>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://127.0.0.1:3306/alpha-blog_test</jdbc-url>
+      <jdbc-url>jdbc:mysql://127.0.0.1:3306/alpha_blog_test</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="yearIsDateType" value="false" />
