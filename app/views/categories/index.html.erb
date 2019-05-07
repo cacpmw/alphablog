@@ -1,0 +1,10 @@
+<h1 align="center">Categories Index</h1>
+
+<% if @categories.count > 0 %>
+  <%= will_paginate class: 'center' %>
+  <%= render 'categories', obj: @categories %>
+  <%= will_paginate class:'center' %>
+
+<% else %>
+  <p align="center">Nenhuma categoria</p>
+  <% end %>
